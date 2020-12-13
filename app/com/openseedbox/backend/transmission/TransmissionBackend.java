@@ -52,7 +52,8 @@ public class TransmissionBackend implements ITorrentBackend {
 				Util.executeCommand("kill -HUP " + pid);
 			}			
 		} catch (IOException ex) {
-			throw new MessageException(ex, "Unable to write transmission config file");
+			// Do nothing if root can't write to the file. The user may want to override it.
+			//throw new MessageException(ex, "Unable to write transmission config file");
 		}
 	}
 
