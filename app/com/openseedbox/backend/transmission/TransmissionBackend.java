@@ -53,7 +53,7 @@ public class TransmissionBackend implements ITorrentBackend {
 			}			
 		} catch (IOException ex) {
 			// Do nothing if root can't write to the file. The user may want to override it.
-			throw ex;
+			Logger.info("Unable to write transmission config file: %s", ex);
 			//throw new MessageException(ex, "Unable to write transmission config file");
 		}
 	}
