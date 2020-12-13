@@ -8,7 +8,7 @@ RUN apt-get -qq update \
 # Update openseedbox-common (from openseedbox/client) and clone openseedbox-server
 RUN git --work-tree=/src/openseedbox-common --git-dir=/src/openseedbox-common/.git pull \
 	&& /play/play deps /src/openseedbox-common --sync \
-	&& git clone --depth=1 -q https://github.com/openseedbox/openseedbox-server /src/openseedbox-server \
+	&& git clone --depth=1 -q https://github.com/stickz/openseedbox-server /src/openseedbox-server \
 	&& /play/play deps /src/openseedbox-server --sync
 
 VOLUME /media/openseedbox
