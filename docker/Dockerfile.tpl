@@ -1,11 +1,11 @@
-FROM openseedbox/client
+FROM stickz007/openseedbox1
 
 RUN apt-get -qq update \
 	&& apt-get install -qq -y transmission-daemon \
 	&& apt-get -y clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Update openseedbox-common (from openseedbox/client) and clone openseedbox-server
+# Update openseedbox-common (from stickz007/openseedbox1) and clone openseedbox-server
 RUN git --work-tree=/src/openseedbox-common --git-dir=/src/openseedbox-common/.git pull \
 	&& /play/play deps /src/openseedbox-common --sync \
 	&& git clone --depth=1 -q https://github.com/stickz/openseedbox-server /src/openseedbox-server \
