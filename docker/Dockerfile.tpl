@@ -1,7 +1,7 @@
 FROM stickz007/openseedbox1
 
 RUN apt-get -qq update \
-	&& apt-get install -qq -y transmission-daemon \
+	&& apt-get install -qq -y transmission-daemon=3.00-1 \
 	&& apt-get -y clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
