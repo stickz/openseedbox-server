@@ -15,7 +15,7 @@ Run cd /var/tmp \
 # Make tranmission	
 RUN cd /var/tmp \
 	&& wget https://github.com/transmission/transmission-releases/raw/master/transmission-3.00.tar.xz \
-	&& tar xzf transmission-3.00.tar.xz \
+	&& tar xvf transmission-3.00.tar.xz \
 	&& cd transmission-3.00 \
 	&& CFLAGS="-O2 -march=native" ./configure --disable-gtk --disable-nls --disable-cli --disable-mac --enable-daemon && make
 
