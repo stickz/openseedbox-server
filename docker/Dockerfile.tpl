@@ -21,7 +21,7 @@ RUN cd /var/tmp \
 
 # Clean up after making is done
 RUN apt-get -qq purge -y \
-	ca-certificates libcurl4-openssl-dev libssl-dev pkg-config build-essential \
+	libcurl4-openssl-dev libssl-dev pkg-config build-essential \
 	&& apt-get -y clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
