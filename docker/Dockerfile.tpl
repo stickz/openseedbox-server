@@ -3,7 +3,7 @@ FROM stickz007/openseedbox1
 # Install build tools
 RUN apt-get -qq update \
 	&& apt-get -qq install -y \
-	ca-certificates libcurl4-openssl-dev libssl-dev pkg-config build-essential 
+	ca-certificates libcurl4-openssl-dev libssl-dev pkg-config build-essential zlib1g-dev 
 	
 # Make & Install Libevent
 Run cd /var/tmp \
@@ -22,7 +22,7 @@ RUN cd /var/tmp \
 
 # Clean up after making is done
 RUN apt-get -qq purge -y \
-	libcurl4-openssl-dev libssl-dev pkg-config build-essential \
+	libcurl4-openssl-dev libssl-dev pkg-config build-essential zlib1g-dev \
 	&& apt-get -y clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
