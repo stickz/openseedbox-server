@@ -10,14 +10,14 @@ Run cd /var/tmp \
 	&& wget https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz \
 	&& tar xzf libevent-2.1.12-stable.tar.gz \
 	&& cd libevent-2.1.12-stable \
-	&& CFLAGS="-O2 -march=native" ./configure --prefix=/usr --disable-static && make && make install
+	&& CFLAGS="-O2" ./configure --prefix=/usr --disable-static && make && make install
 	
 # Make & Install tranmission	
 RUN cd /var/tmp \
 	&& wget https://github.com/transmission/transmission-releases/raw/master/transmission-3.00.tar.xz \
 	&& tar xvf transmission-3.00.tar.xz \
 	&& cd transmission-3.00 \
-	&& CFLAGS="-O2 -march=native" ./configure --disable-gtk --disable-nls --disable-cli --disable-mac --enable-daemon \
+	&& CFLAGS="-O2" ./configure --disable-gtk --disable-nls --disable-cli --disable-mac --enable-daemon \
 	&& make && make install
 
 # Clean up after making is done
