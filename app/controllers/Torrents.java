@@ -152,25 +152,6 @@ public class Torrents extends Base {
 		}));		
 	}
 	
-	/**
-	 * Returns a list of trackers for the specified torrent or torrents
-	 * in the backend
-	 * @param hash The torrent hash
-	 * @param hashes A list of torrent hashes 
-	 */	
-	public static void trackers(String hash, List<String> hashes) {
-		Map<String, List<ITracker>> trackers = new HashMap<String, List<ITracker>>();
-		if (hashes != null) {
-			trackers = getBackend().getTorrentTrackers(hashes);
-		} else if (!StringUtils.isEmpty(hash)) {
-			trackers.put(hash, getBackend().getTorrentTrackers(hash));
-		} else {
-			resultError("You must specify the 'hash' or 'hashes' parameter.");
-		}
-		result(Util.convertToMap(new Object[] {
-			"trackers", trackers
-		}));			
-	}
 	
 	/**
 	 * Returns a list of peers for the specified torrent or torrents
