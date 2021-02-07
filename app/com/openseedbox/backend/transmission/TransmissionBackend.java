@@ -238,19 +238,6 @@ public class TransmissionBackend implements ITorrentBackend {
 		return ret;
 	}
 
-	public List<ITracker> getTorrentTrackers(String hash) {
-		return getTorrentTrackers(Arrays.asList(new String[] { hash })).get(hash);
-	}
-
-	public Map<String, List<ITracker>> getTorrentTrackers(List<String> hashes) {
-		List<ITorrent> torrents = getTorrentInfo(hashes, false, false, false, true);
-		Map<String, List<ITracker>> ret = new HashMap<String, List<ITracker>>();
-		for (ITorrent t : torrents) {
-			ret.put(t.getTorrentHash(), t.getTrackers());
-		}
-		return ret;
-	}
-
 	public List<IFile> getTorrentFiles(String hash) {
 		return getTorrentFiles(Arrays.asList(new String[] { hash })).get(hash);
 	}
