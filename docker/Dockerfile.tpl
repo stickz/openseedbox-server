@@ -1,9 +1,10 @@
 FROM stickz007/openseedbox1
 
-# Update ubuntu source list with the transmission ppa
+# Update ubuntu sources list & add key for the transmission ppa
 RUN cd /etc/apt \
 	&& echo "deb http://ppa.launchpad.net/transmissionbt/ppa/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) main" >> sources.list \
-	&& echo "deb-src http://ppa.launchpad.net/transmissionbt/ppa/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) main" >> sources.list
+	&& echo "deb-src http://ppa.launchpad.net/transmissionbt/ppa/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) main" >> sources.list \
+	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A37DA909AE70535824D82620976B5901365C5CA1
 
 # Install transmission-daemon
 RUN apt-get -qq update \
