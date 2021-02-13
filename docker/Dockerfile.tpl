@@ -1,15 +1,16 @@
 FROM stickz007/openseedbox1
 
 # Update ubuntu sources list & add key for the transmission ppa
-RUN cd /etc/apt \
-	&& echo "deb http://ppa.launchpad.net/transmissionbt/ppa/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) main" >> sources.list \
-	&& echo "deb-src http://ppa.launchpad.net/transmissionbt/ppa/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) main" >> sources.list \
+RUN apt-get -qq update && apt-get -qq install -y gnupg \
+	&& echo "deb http://ppa.launchpad.net/transmissionbt/ppa/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) main" >> /etc/apt/sources.list \
+	&& echo "deb-src http://ppa.launchpad.net/transmissionbt/ppa/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) main" >> /etc/apt/sources.list \
 	&& apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A37DA909AE70535824D82620976B5901365C5CA1
 
 # Install transmission-daemon
 RUN apt-get -qq update \
 	&& apt-get install -qq -y transmission-daemon \
 	&& apt-get -y clean \
+	&& apt-get -qq purge -y gnupg \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Update openseedbox-common (from stickz007/openseedbox1) and clone openseedbox-server
