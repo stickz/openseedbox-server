@@ -1,5 +1,10 @@
 FROM stickz007/openseedbox1
 
+# Update ubuntu source list with the transmission ppa
+RUN cd /etc/apt \
+	&& echo "deb http://ppa.launchpad.net/transmissionbt/ppa/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) main" >> sources.list \
+	&& echo "deb-src http://ppa.launchpad.net/transmissionbt/ppa/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) main" >> sources.list
+
 # Install transmission-daemon
 RUN apt-get -qq update \
 	&& apt-get install -qq -y transmission-daemon \
